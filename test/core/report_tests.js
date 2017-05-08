@@ -1,7 +1,7 @@
 //@ts-check
 const common = require("../common/common"),
     mocha = common.mocha,
-    chai = common.mocha,
+    chai = common.chai,
     should = common.should,
     expect = common.expect,
     sinon = common.sinon,

@@ -13,15 +13,15 @@ describe('organisations', function() {
         currentApp.core.organisations.getOrganisation()
             .then(function(ret) {
 
-                var orgVersions = ["AU", "NZ", "GLOBAL", "UK", "US"];
-                expect(ret.Name).to.not.equal("");
-                expect(ret.Version).to.not.equal("");
-                expect(ret.Version).to.be.oneOf(orgVersions);
-                done();
+                var orgVersions = ["AU", "NZ", "GLOBAL", "UK", "US"]
+                expect(ret.Name).to.not.equal("")
+                expect(ret.Version).to.not.equal("")
+                expect(ret.Version).to.be.oneOf(orgVersions)
+                done()
             })
             .catch(function(err) {
-                console.log(err);
-                done(wrapError(err));
+                console.log(err)
+                done(wrapError(err))
             })
     })
-});
+})

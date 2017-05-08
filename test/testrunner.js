@@ -10,7 +10,18 @@ describe('testrunner', function() {
     //Accounting (Core) API Tests 
     importTest('token_tests', __dirname + '/core/token_tests.js')
     importTest('organisation_tests', __dirname + '/core/organisation_tests.js')
+    importTest('accounts_tests', __dirname + '/core/accounts_tests.js')
+    importTest('creditnotes_tests', __dirname + '/core/creditnotes_tests.js')
+    importTest('currencies_tests', __dirname + '/core/currencies_tests.js')
+    importTest('invoicereminder_tests', __dirname + '/core/invoicereminder_tests.js')
+    importTest('brandingtheme_tests', __dirname + '/core/brandingtheme_tests.js')
+    importTest('taxrate_tests', __dirname + '/core/taxrate_tests.js')
+    importTest('invoices_tests', __dirname + '/core/invoices_tests.js')
+    importTest('payments_tests', __dirname + '/core/payments_tests.js')
+    importTest('banktransactions_tests', __dirname + '/core/banktransactions_tests.js')
     importTest('report_tests', __dirname + '/core/report_tests.js')
+    importTest('banktransfers_tests', __dirname + '/core/banktransfers_tests.js')
+    importTest('trackingcategories_tests', __dirname + '/core/trackingcategories_tests.js')
 
     //Payroll API Tests 
     importTest('payroll_tests', __dirname + '/payroll/payrolltests.js')
