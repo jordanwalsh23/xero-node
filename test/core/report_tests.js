@@ -40,22 +40,6 @@ describe('reporting tests', function() {
             });
     });
 
-    // There appears to be no way to archive a bank account via the API so deleting instead
-    after('delete the test accounts', function() {
-
-        bankAccounts.forEach(function(account) {
-
-            currentApp.core.accounts.deleteAccount(account.id)
-                .then(function(response) {
-                    expect(response.Status).to.equal("OK");
-                })
-                .catch(function(err) {
-                    console.log(util.inspect(err, null, null));
-                });
-        });
-
-    });
-
     it('Generates a Balance Sheet Report', function(done) {
         currentApp.core.reports.generateReport({ id: 'BalanceSheet' })
             .then(function(report) {

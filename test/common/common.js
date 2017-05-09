@@ -48,6 +48,7 @@ function wrapError(err) {
     }
 }
 
+module.exports.fs = fs
 module.exports.sinon = sinon
 module.exports.mocha = mocha
 module.exports.Browser = Browser
