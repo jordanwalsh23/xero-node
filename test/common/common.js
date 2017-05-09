@@ -12,7 +12,7 @@ const metaConfig = require(__dirname + '/../config/testing_config.json'),
     util = require('util')
 
 //Change the log level
-xero.setLogLevel('error')
+xero.setLogLevel('debug')
 
 let APPTYPE = metaConfig.APPTYPE
 let config = metaConfig[APPTYPE.toLowerCase()]
