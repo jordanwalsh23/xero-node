@@ -203,7 +203,6 @@ describe('earningsrates', function() {
                 var updatedID = earningsRate.EarningsRateID
                 var updatedName = "UPDATED!!!"
 
-
                 earningsRate.Name = updatedName
 
                 //We use the new method for both new and updated objects
@@ -233,29 +232,21 @@ describe('earningsrates', function() {
     })
 
     it('deletes an earnings rate', function(done) {
-        currentApp.payroll.payitems.getEarningsRate(earningsRateID)
-            .then(function(earningsRate) {
+        currentApp.payroll.payitems.deleteEarningsRate(earningsRateID)
+            .then(function(earningsRates) {
+                expect(earningsRates.entities.length).to.be.at.least(1)
 
-                let updatedEarningsRate = currentApp.payroll.payitems.newEarningsRate(earningsRate);
+                earningsRates.entities.forEach(function(earningsRate) {
+                    expect(earningsRate.EarningsRateID).to.not.equal(earningsRateID)
+                })
 
-                updatedEarningsRate.delete()
-                    .then(function(earningsRates) {
-                        expect(earningsRates.entities.length).to.be.at.least(1)
-
-                        earningsRates.entities.forEach(function(earningsRate) {
-                            expect(earningsRate.EarningsRateID).to.not.equal(earningsRateID)
-                        })
-
-                        done();
-                    })
-                    .catch(function(err) {
-                        done(wrapError(err));
-                    })
+                done();
             })
             .catch(function(err) {
                 done(wrapError(err));
             })
     })
+
 
 
 })
