@@ -1,4 +1,3 @@
-//@ts-check
 const common = require("../common/common"),
     mocha = common.mocha,
     chai = common.mocha,

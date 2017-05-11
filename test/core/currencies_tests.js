@@ -1,4 +1,3 @@
-//@ts-check
 const common = require("../common/common"),
     expect = common.expect,
     wrapError = common.wrapError

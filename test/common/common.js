@@ -1,4 +1,3 @@
-//@ts-check
 const metaConfig = require(__dirname + '/../config/testing_config.json'),
     fs = require('fs'),
     xero = require('../..'),
