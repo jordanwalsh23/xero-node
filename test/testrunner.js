@@ -32,6 +32,8 @@ describe('testrunner', function() {
     //Payroll API Tests 
     importTest('earningsrates_tests', __dirname + '/payroll/earningsrates_tests.js')
     importTest('deductiontypes_tests', __dirname + '/payroll/deductiontypes_tests.js')
+    importTest('reimbursementtypes_tests', __dirname + '/payroll/reimbursementtypes_tests.js')
+    importTest('leavetypes_tests', __dirname + '/payroll/leavetypes_tests.js')
 })
 
 function importTest(name, path) {
