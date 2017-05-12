@@ -168,7 +168,7 @@ describe('contacts', function() {
                 }]
                 contact.save()
                     .then(function(updatedContact) {
-                        expect(updatedContact.response.Contacts.Contact.Name).to.equal(newName)
+                        expect(updatedContact.entities[0].Name).to.equal(newName)
                         done()
                     })
                     .catch(function(err) {

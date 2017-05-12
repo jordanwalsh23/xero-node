@@ -275,9 +275,13 @@ describe('Credit Notes', function() {
 
         var creditNoteData = {
             Type: 'ACCPAYCREDIT',
+            Reference: 'Test CreditNote from Node.js',
             Contact: {
-                ContactID: ''
+                Name: 'John Smith'
             },
+            Status: 'DRAFT',
+            LineAmountTypes: 'Exclusive',
+            CurrencyCode: 'AUD',
             LineItems: [{
                 Description: 'MacBook - White',
                 Quantity: 1,
@@ -286,35 +290,26 @@ describe('Credit Notes', function() {
             }]
         }
 
-        currentApp.core.contacts.getContacts()
-            .then(function(contacts) {
-                creditNoteData.Contact.ContactID = contacts[0].ContactID
+        var creditNote = currentApp.core.creditNotes.newCreditNote(creditNoteData)
 
-                var creditNote = currentApp.core.creditNotes.newCreditNote(creditNoteData)
+        creditNote.save()
+            .then(function(creditNotes) {
+                expect(creditNotes.entities).to.have.length(1)
+                var thisNote = creditNotes.entities[0]
 
-                creditNote.save()
-                    .then(function(creditNotes) {
-                        expect(creditNotes.entities).to.have.length(1)
-                        var thisNote = creditNotes.entities[0]
+                creditNoteID = thisNote.CreditNoteID
 
-                        creditNoteID = thisNote.CreditNoteID
+                expect(thisNote.Type).to.equal(creditNoteData.Type)
+                expect(thisNote.Contact.ContactID).to.equal(creditNoteData.Contact.ContactID)
 
-                        expect(thisNote.Type).to.equal(creditNoteData.Type)
-                        expect(thisNote.Contact.ContactID).to.equal(creditNoteData.Contact.ContactID)
+                thisNote.LineItems.forEach(function(lineItem) {
+                    expect(lineItem.Description).to.equal(creditNoteData.LineItems[0].Description)
+                    expect(lineItem.Quantity).to.equal(creditNoteData.LineItems[0].Quantity)
+                    expect(lineItem.UnitAmount).to.equal(creditNoteData.LineItems[0].UnitAmount)
+                    expect(lineItem.AccountCode.toLowerCase()).to.equal(creditNoteData.LineItems[0].AccountCode.toLowerCase())
+                })
 
-                        thisNote.LineItems.forEach(function(lineItem) {
-                            expect(lineItem.Description).to.equal(creditNoteData.LineItems[0].Description)
-                            expect(lineItem.Quantity).to.equal(creditNoteData.LineItems[0].Quantity)
-                            expect(lineItem.UnitAmount).to.equal(creditNoteData.LineItems[0].UnitAmount)
-                            expect(lineItem.AccountCode.toLowerCase()).to.equal(creditNoteData.LineItems[0].AccountCode.toLowerCase())
-                        })
-
-                        done()
-                    })
-                    .catch(function(err) {
-                        console.log(util.inspect(err, null, null))
-                        done(wrapError(err))
-                    })
+                done()
             })
             .catch(function(err) {
                 console.log(util.inspect(err, null, null))

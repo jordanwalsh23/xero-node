@@ -30,11 +30,11 @@ describe('taxRates', function() {
                     expect(taxRate.Name).to.not.equal(undefined)
                     expect(taxRate.TaxType).to.not.equal("")
                     expect(taxRate.TaxType).to.not.equal(undefined)
-                    expect(taxRate.CanApplyToAssets).to.be.oneOf([true, false])
-                    expect(taxRate.CanApplyToEquity).to.be.oneOf([true, false])
-                    expect(taxRate.CanApplyToExpenses).to.be.oneOf([true, false])
-                    expect(taxRate.CanApplyToLiabilities).to.be.oneOf([true, false])
-                    expect(taxRate.CanApplyToRevenue).to.be.oneOf([true, false])
+                    expect(taxRate.CanApplyToAssets).to.be.a('Boolean')
+                    expect(taxRate.CanApplyToEquity).to.be.a('Boolean')
+                    expect(taxRate.CanApplyToExpenses).to.be.a('Boolean')
+                    expect(taxRate.CanApplyToLiabilities).to.be.a('Boolean')
+                    expect(taxRate.CanApplyToRevenue).to.be.a('Boolean')
                     expect(taxRate.DisplayTaxRate).to.be.a('Number')
                     expect(taxRate.Status).to.be.oneOf(['ACTIVE', 'DELETED', 'ARCHIVED'])
                     expect(taxRate.TaxComponents).to.have.length.greaterThan(0)
@@ -42,9 +42,8 @@ describe('taxRates', function() {
                     taxRate.TaxComponents.forEach(function(taxComponent) {
                         expect(taxComponent.Name).to.not.equal("")
                         expect(taxComponent.Name).to.not.equal(undefined)
-                        expect(taxComponent.Rate).to.be.a('String')
-                            //Hacked to a string as the framework doesn't recursively translate nested objects
-                        expect(taxComponent.IsCompound).to.be.oneOf(["true", "false"])
+                        expect(taxComponent.Rate).to.be.a('Number')
+                        expect(taxComponent.IsCompound).to.be.a('Boolean')
                     })
                 })
                 done()
@@ -79,11 +78,11 @@ describe('taxRates', function() {
 
                 expect(createdTaxRate.Name).to.equal(taxrate.Name)
                 expect(createdTaxRate.TaxType).to.match(/TAX[0-9]{3}/)
-                expect(createdTaxRate.CanApplyToAssets).to.be.oneOf([true, false])
-                expect(createdTaxRate.CanApplyToEquity).to.be.oneOf([true, false])
-                expect(createdTaxRate.CanApplyToExpenses).to.be.oneOf([true, false])
-                expect(createdTaxRate.CanApplyToLiabilities).to.be.oneOf([true, false])
-                expect(createdTaxRate.CanApplyToRevenue).to.be.oneOf([true, false])
+                expect(createdTaxRate.CanApplyToAssets).to.be.a('Boolean')
+                expect(createdTaxRate.CanApplyToEquity).to.be.a('Boolean')
+                expect(createdTaxRate.CanApplyToExpenses).to.be.a('Boolean')
+                expect(createdTaxRate.CanApplyToLiabilities).to.be.a('Boolean')
+                expect(createdTaxRate.CanApplyToRevenue).to.be.a('Boolean')
                 expect(createdTaxRate.DisplayTaxRate).to.equal(taxrate.TaxComponents[0].Rate)
                 expect(createdTaxRate.EffectiveRate).to.equal(taxrate.TaxComponents[0].Rate)
                 expect(createdTaxRate.Status).to.equal('ACTIVE')
@@ -91,10 +90,8 @@ describe('taxRates', function() {
 
                 createdTaxRate.TaxComponents.forEach(function(taxComponent) {
                     expect(taxComponent.Name).to.equal(taxrate.TaxComponents[0].Name)
-
-                    //This is hacked toString() because of: https://github.com/jordanwalsh23/xero-node/issues/13
-                    expect(taxComponent.Rate).to.equal(taxrate.TaxComponents[0].Rate.toString())
-                    expect(taxComponent.IsCompound).to.equal(taxrate.TaxComponents[0].IsCompound.toString())
+                    expect(taxComponent.Rate).to.equal(taxrate.TaxComponents[0].Rate)
+                    expect(taxComponent.IsCompound).to.equal(taxrate.TaxComponents[0].IsCompound)
                 })
                 done()
             })
