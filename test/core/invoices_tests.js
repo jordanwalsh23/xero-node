@@ -71,6 +71,12 @@ describe('invoices', function() {
                     expect(lineItem.UnitAmount).to.match(/[0-9]+\.?[0-9]{0,4}/)
                 })
 
+                var dueDate = new Date(invoice.DueDate);
+                console.log('Due Date: ', dueDate)
+
+                expect(typeof dueDate.getDate).to.equal('function')
+
+
                 done()
             })
             .catch(function(err) {
@@ -102,6 +108,7 @@ describe('invoices', function() {
                 done()
             })
             .catch(function(err) {
+                console.log(util.inspect(err, null, null))
                 done(wrapError(err))
             })
     })
@@ -113,6 +120,7 @@ describe('invoices', function() {
                 done()
             })
             .catch(function(err) {
+                console.log(util.inspect(err, null, null))
                 done(wrapError(err))
             })
     })
@@ -137,10 +145,12 @@ describe('invoices', function() {
                         done()
                     })
                     .catch(function(err) {
+                        console.log(util.inspect(err, null, null))
                         done(wrapError(err))
                     })
             })
             .catch(function(err) {
+                console.log(util.inspect(err, null, null))
                 done(wrapError(err))
             })
     })
