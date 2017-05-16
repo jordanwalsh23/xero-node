@@ -87,7 +87,7 @@ describe('accounts', function() {
                     expect(account.HasAttachments).to.not.be.undefined
 
                     expect(account.UpdatedDateUTC).to.not.equal("")
-                    expect(account.UpdatedDateUTC).to.be.a('string')
+                    expect(account.UpdatedDateUTC).to.be.a('Date')
                 })
                 done()
             })
