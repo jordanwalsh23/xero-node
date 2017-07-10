@@ -89,8 +89,8 @@ describe('contacts', function() {
     it('get - modifiedAfter', function(done) {
         var modifiedAfter = new Date()
 
-        //take 20 seconds ago as we just created a contact
-        modifiedAfter.setTime(modifiedAfter.getTime() - 20000)
+        //take 30 seconds ago as we just created a contact
+        modifiedAfter.setTime(modifiedAfter.getTime() - 30000)
 
         currentApp.core.contacts.getContacts({ modifiedAfter: modifiedAfter })
             .then(function(contacts) {

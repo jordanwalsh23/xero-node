@@ -4,30 +4,25 @@ const common = require("../common/common"),
     xero = common.xero,
     wrapError = common.wrapError,
     util = common.util,
-    uuid = common.uuid
+    uuid = common.uuid;
 
-let currentApp = common.currentApp
+var currentApp = common.currentApp;
 
 describe('bank transfers', function() {
-    let sampleTransferID = '',
-        bankAccounts = []
+    var sampleTransferID = '',
+        bankAccounts = [];
 
     before('get the bank accounts for testing', function() {
-        let filter = 'TYPE == "BANK" && Status == "ACTIVE"'
+        let filter = 'TYPE == "BANK" && Status == "ACTIVE" && Code != null'
         return currentApp.core.accounts.getAccounts({ where: filter })
             .then(function(accounts) {
-                //Remove any accounts that don't have a 'Code' set as we need this later.
-                accounts.forEach(function(el, i, array) {
-                    if (!el.Code) {
-                        accounts.splice(i, 1)
-                    }
-                })
-                bankAccounts = accounts
+                bankAccounts = accounts;
             })
     })
 
     it('create sample bank transfer', function(done) {
-        var transfer = currentApp.core.bankTransfers.newBankTransfer({
+        //console.log(bankAccounts);
+        var payload = {
             FromBankAccount: {
                 Code: bankAccounts[0].Code,
             },
@@ -35,7 +30,10 @@ describe('bank transfers', function() {
                 Code: bankAccounts[1].Code,
             },
             Amount: '20.00'
-        });
+        };
+        console.log(payload);
+        var transfer = currentApp.core.bankTransfers.newBankTransfer(payload);
+
         transfer.save()
             .then(function(response) {
                 expect(response.entities).to.have.length.greaterThan(0);
