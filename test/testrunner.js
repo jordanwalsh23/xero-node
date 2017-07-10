@@ -11,7 +11,7 @@ describe('testrunner', function() {
         // importTest('token_tests', __dirname + '/core/token_tests.js')
         // importTest('organisation_tests', __dirname + '/core/organisation_tests.js')
         // importTest('accounts_tests', __dirname + '/core/accounts_tests.js')
-        // importTest('creditnotes_tests', __dirname + '/core/creditnotes_tests.js')
+    importTest('creditnotes_tests', __dirname + '/core/creditnotes_tests.js')
         // importTest('currencies_tests', __dirname + '/core/currencies_tests.js')
         // importTest('invoicereminder_tests', __dirname + '/core/invoicereminder_tests.js')
         // importTest('brandingtheme_tests', __dirname + '/core/brandingtheme_tests.js')
@@ -26,7 +26,7 @@ describe('testrunner', function() {
         // importTest('contacts_tests', __dirname + '/core/contacts_tests.js')
         // importTest('journals_tests', __dirname + '/core/journals_tests.js')
         // importTest('users_tests', __dirname + '/core/users_tests.js')
-    importTest('attachment_tests', __dirname + '/core/attachment_tests.js')
+        //importTest('attachment_tests', __dirname + '/core/attachment_tests.js')
 
     // //Payroll API Tests 
     // importTest('earningsrates_tests', __dirname + '/payroll/earningsrates_tests.js')

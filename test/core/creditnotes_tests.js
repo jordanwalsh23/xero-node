@@ -348,7 +348,7 @@ describe('Credit Notes', function() {
 
     it('adds an allocation to a credit note', function(done) {
 
-        currentApp.core.invoices.getInvoices({ where: 'Type == "ACCPAY" and Status == "AUTHORISED"' })
+        currentApp.core.invoices.getInvoices({ where: 'Type == "ACCPAY" and Status == "AUTHORISED" and AmountCredited == 0' })
             .then(function(invoices) {
                 expect(invoices).to.have.length.greaterThan(0)
 
@@ -381,8 +381,10 @@ describe('Credit Notes', function() {
 
                         //Now apply the allocation to the original invoice.
                         var allocations = [{
-                            AppliedAmount: myCreditNoteAmount,
-                            InvoiceID: myInvoice.InvoiceID
+                            Amount: myCreditNoteAmount,
+                            Invoice: {
+                                InvoiceID: myInvoice.InvoiceID
+                            }
                         }]
 
                         thisNote.saveAllocations(allocations)
