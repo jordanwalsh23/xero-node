@@ -1,5 +1,8 @@
 xero-node (alpha)
 ===========
+
+[![npm version](https://badge.fury.io/js/xero-node.svg)](https://badge.fury.io/js/xero-node)
+
 An API wrapper for xero (http://developer.xero.com).
 
 Supports the three applications types:
@@ -25,6 +28,7 @@ The following Xero API functions are supported:
 * Invoice Reminders
 * Items
 * Journals
+* Manual Journals
 * Organisations
 * Payments
 * Reports
@@ -192,6 +196,18 @@ npm test
 
 ## Release Change Log
 
+* 2.2.0
+    - Merged [PR#46](https://github.com/XeroAPI/xero-node/pull/46) - Merge PR#45 and provide library level support for boolean values (formerly this required string conversion).
+* 2.1.8
+    - Merged [PR#44](https://github.com/XeroAPI/xero-node/pull/44) - Merge PR#43 and expose more contact fields (fix for issue #40).
+* 2.1.7
+    - Merged [PR#41](https://github.com/XeroAPI/xero-node/pull/41) - Added support for multiple item creation (fix for issue #39).
+* 2.1.6
+    - Merged [PR#38](https://github.com/XeroAPI/xero-node/pull/38) - Fixed attachment streaming bug on partner applications.
+* 2.1.5
+    - Merged [PR#34](https://github.com/XeroAPI/xero-node/pull/34) - Updated lodash version as this was causing minor issues.
+* 2.1.4
+    - Merged [PR#24](https://github.com/XeroAPI/xero-node/pull/24) - Add support for Manual Journals.
 * 2.1.3
     - Merged [PR#18](https://github.com/XeroAPI/xero-node/pull/18) - set a default useragent header when not provided in the config file and warn the user.
 * 2.1.2
