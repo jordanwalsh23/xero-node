@@ -31,7 +31,6 @@ describe('bank transfers', function() {
             },
             Amount: '20.00'
         };
-        console.log(payload);
         var transfer = currentApp.core.bankTransfers.newBankTransfer(payload);
 
         transfer.save()
