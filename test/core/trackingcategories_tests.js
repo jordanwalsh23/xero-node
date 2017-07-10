@@ -95,8 +95,6 @@ describe('tracking categories', function() {
 
         currentApp.core.trackingCategories.getTrackingCategory(sampleTrackingCategory.TrackingCategoryID)
             .then(function(trackingCategory) {
-                //console.log(response.Options[0].TrackingOptionID)
-
                 let optionIDtoUpdate = trackingCategory.Options[0].TrackingOptionID
 
                 trackingCategory.saveTrackingOptions(TrackingOptions, optionIDtoUpdate)
