@@ -22,6 +22,7 @@
   "dependencies": {
     "follow-redirects": "^1.2.3",
     "lodash": "^4.17.4",
+    "pkginfo": "^0.4.0",
     "uuid": "^3.0.1"
   },
   "readmeFilename": "README.md",
