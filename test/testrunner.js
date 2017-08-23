@@ -15,7 +15,7 @@ describe('Authorisation Tests', () => {
   importTest('token_tests', `${__dirname}/core/token_tests.js`);
 });
 
-describe('Accounting API Tests', () => {
+describe.skip('Accounting API Tests', () => {
   // Accounting (Core) API Tests
   importTest('organisation_tests', `${__dirname}/core/organisation_tests.js`);
   importTest('accounts_tests', `${__dirname}/core/accounts_tests.js`);
@@ -54,20 +54,20 @@ describe('Accounting API Tests', () => {
   );
 });
 
-describe.skip('Payroll API Tests', () => {
+describe('Payroll API Tests', () => {
   // //Payroll API Tests - not yet working
   importTest(
     'earningsrates_tests',
     `${__dirname}/payroll/earningsrates_tests.js`
   );
-  importTest(
-    'deductiontypes_tests',
-    `${__dirname}/payroll/deductiontypes_tests.js`
-  );
-  importTest(
-    'reimbursementtypes_tests',
-    `${__dirname}/payroll/reimbursementtypes_tests.js`
-  );
-  importTest('leavetypes_tests', `${__dirname}/payroll/leavetypes_tests.js`);
-  importTest('employees_tests', `${__dirname}/payroll/employees_tests.js`);
+  // importTest(
+  //   'deductiontypes_tests',
+  //   `${__dirname}/payroll/deductiontypes_tests.js`
+  // );
+  // importTest(
+  //   'reimbursementtypes_tests',
+  //   `${__dirname}/payroll/reimbursementtypes_tests.js`
+  // );
+  // importTest('leavetypes_tests', `${__dirname}/payroll/leavetypes_tests.js`);
+  // importTest('employees_tests', `${__dirname}/payroll/employees_tests.js`);
 });
